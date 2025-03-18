@@ -1,0 +1,89 @@
+*PopYank.txt*	Yank the content of the popup window
+
+==============================================================================
+CONTENTS                                                 *PopYank-contents*
+
+    1. Introduction                         |PopYank-introduction|
+    2. Usage                                |PopYank-usage|
+      2.1 Commands                          |PopYank-commands|
+      2.2 Mapping                           |PopYank-mapping|
+ 
+
+==============================================================================
+1. Introduction                             *PopYank* *PopYank-introduction*
+
+PopYank provides a simple way to yank the content of the latest popup window
+to user specified register.
+
+==============================================================================
+2. Usage                                                *PopYank-usage*
+
+PopYank is trigged either by commands or a key mapping.
+
+------------------------------------------------------------------------------
+2.1 Commands                                            *PopYank-commands*
+
+
+:PopYank						*:PopYank*
+
+	Yank the content of the popup window. An optional register name can be
+        appended to specify the target register.
+
+        Examples: >
+
+        :PopYank<CR>
+
+            save the content to the unnamed register @"
+
+        :PopYank"a<CR>
+
+            save the content to register @a
+
+        :PopYank"A<CR>
+
+            append the content to register @a
+
+        :PopYank"+<CR>
+
+            save the content to the gui clipboard
+
+:PopYankP						*:PopYankP*
+
+	Yank the content of the popup window. A single key stroke after the
+        prompt will determine the target register.
+
+        Examples: >
+
+        :PopYankP<CR>
+        <CR>
+
+            save the content to the unnamed register @"
+
+        :PopYank<CR>
+        a
+
+            save the content to register @a
+
+        :PopYank<CR>
+        A
+
+            append the content to register @a
+
+        :PopYank<CR>
+        +
+
+            save the content to the gui clipboard
+
+------------------------------------------------------------------------------
+2.1 Mapping                                             *PopYank-mapping*
+
+<Plug>(PopYank)
+
+The functionality of the this mapping is the same as the command |:PopYankP|
+
+To make the mapping work, the recommend configuration is as below in you .vimrc
+>
+ nmap <leader>py <Plug>(PopYank)
+<
+==============================================================================
+ vim:tw=78:ts=8:noet:ft=help:norl:
